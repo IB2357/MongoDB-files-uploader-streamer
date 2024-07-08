@@ -12,6 +12,7 @@ watcher_delay = 1 # in second
 batch_size = 1 # int
 
 # MAIN
+os.makedirs(folder_path, exist_ok=True) # create if not exist 
 os.makedirs(processed_folder_path, exist_ok=True) # create if not exist 
 
 

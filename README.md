@@ -16,7 +16,9 @@ before use:
 ```bash
 python upload.py
 ```
-Now add files to /source folder and watch them upload 
+a new folder `source/` will be created (if not exist)
+
+Now add files to `source/` folder and watch them upload 
 
 ## for streaming
 ```bash
