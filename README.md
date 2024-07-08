@@ -16,9 +16,11 @@ before use:
 ```bash
 python upload.py
 ```
-a new folder `source/` will be created (if not exist)
+a new folders `source/` & `archive/` will be created (if not exist)
 
 Now add files to `source/` folder and watch them upload 
+
+uploaded files will move from `source/` to `archive/`
 
 ## for streaming
 ```bash
