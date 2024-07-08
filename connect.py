@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
 import bson
 from datetime import datetime
-
+from os import getenv
 from dotenv import load_dotenv
 load_dotenv() # to get env vars from .env
 

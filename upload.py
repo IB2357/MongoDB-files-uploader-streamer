@@ -1,5 +1,4 @@
 import os
-from os import getenv
 import time
 import shutil
 from  connect import * 
