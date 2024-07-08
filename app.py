@@ -1,35 +1,19 @@
-from pymongo import MongoClient
-from pymongo.errors import ConnectionFailure
-import bson
-from datetime import datetime
-
 import os
 from os import getenv
 import time
 import shutil
-
-from dotenv import load_dotenv
-load_dotenv() # to get env vars from .env
+from  connect import * 
 
 
 # CONFIGS
-client = MongoClient(getenv('CONNECT_STR'))
-db = client[getenv('DATABASE')]
-collection = db[getenv('COLLECTION')]
 folder_path = 'source'  
 processed_folder_path = 'archive'  
 allowed_extensions = {'.pdf', '.xml', '.txt'}  
 watcher_delay = 1 # in second
 batch_size = 1 # int
 
-
-
-try:
-    # The ismaster command is cheap and does not require auth.
-    client.admin.command('ismaster')
-    print("MongoDB server is available")
-except ConnectionFailure:
-    print("Server not available")
+# MAIN
+os.makedirs(processed_folder_path, exist_ok=True) # create if not exist 
 
 
 def _is_valid_file(file_path, filename):
@@ -41,9 +25,6 @@ def _is_valid_file(file_path, filename):
 def _move_to_processed(file_path, filename):
     processed_file_path = os.path.join(processed_folder_path, filename)
     shutil.move(file_path, processed_file_path)  
-
-
-os.makedirs(processed_folder_path, exist_ok=True) # create if not exist 
 
 try:
     while True:
